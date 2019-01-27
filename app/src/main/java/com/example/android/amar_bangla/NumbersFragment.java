@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,14 +41,14 @@ public class NumbersFragment extends Fragment {
 
         }
     };
-
-
-    private MediaPlayer.OnCompletionListener mOnCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            releaseMediaPlayer();
-        }
-    };
+//
+//
+//    private MediaPlayer.OnCompletionListener mOnCompletionListener = new MediaPlayer.OnCompletionListener() {
+//        @Override
+//        public void onCompletion(MediaPlayer mediaPlayer) {
+//            releaseMediaPlayer();
+//        }
+//    };
 
 
 
@@ -78,40 +79,31 @@ public class NumbersFragment extends Fragment {
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
-        adapter = new Word_Adapter(getActivity(), words,R.color.category_numbers);
+        adapter = new Word_Adapter(getActivity(), words,R.color.category_numbers, mAudioManager);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // word_list.xml layout file.
         ListView listView = (ListView) rootview.findViewById(R.id.list);
 
-        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
-        // {@link ListView} will display list items for each {@link Word} in the list.
+
+
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                releaseMediaPlayer();
-                Word word = words.get(position);
-                // Request audio focus so in order to play the audio file. The app needs to play a
-                // short audio file, so we will request audio focus with a short amount of time
-                // with AUDIOFOCUS_GAIN_TRANSIENT.
-                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
-                        AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
-                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    mediaPlayer = MediaPlayer.create(getActivity(), word.getmAudioResourceId());
-                    mediaPlayer.start();
-                    mediaPlayer.setOnCompletionListener(mOnCompletionListener);
-                }
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                releaseMediaPlayer();
+//                makeSound(words, position);
+//
+//            }
+//        });
 
 
         return rootview;
     }
 
-    private void releaseMediaPlayer() {
+    public void releaseMediaPlayer() {
         // If the media player is not null, then it may be currently playing a sound.
         if (mediaPlayer != null) {
             // Regardless of the current state of the media player, release its resources
@@ -125,6 +117,20 @@ public class NumbersFragment extends Fragment {
             mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
+//
+//    public void makeSound(ArrayList<Word> words, int position){
+//        Word word = words.get(position);
+//        // Request audio focus so in order to play the audio file. The app needs to play a
+//        // short audio file, so we will request audio focus with a short amount of time
+//        // with AUDIOFOCUS_GAIN_TRANSIENT.
+//        int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+//                AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+//        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+//            mediaPlayer = MediaPlayer.create(getActivity(), word.getmAudioResourceId());
+//            mediaPlayer.start();
+//            mediaPlayer.setOnCompletionListener(mOnCompletionListener);
+//        }
+//    }
 
     @Override
     public void onStop() {

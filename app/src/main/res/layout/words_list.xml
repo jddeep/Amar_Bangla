@@ -1,53 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_height="wrap_content"
+<RelativeLayout
+    android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/img1"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:padding="1dp"
-        tools:src="@drawable/number_one" />
-
-    <RelativeLayout
-        android:id="@+id/list_1"
+    <android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-
-        android:layout_height="80dp"
-        android:layout_toRightOf="@id/img1"
-        android:orientation="vertical"
-        android:padding="12dp">
-
-        <TextView
-            android:id="@+id/Bangla_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="23dp"
-            tools:text="Aak" />
-
-        <TextView
-            android:id="@+id/default_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Bangla_text_view"
-            android:textColor="#FFFFFF"
-            android:textSize="19dp"
-            tools:text="One" />
-    </RelativeLayout>
-
-    <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/play_arrow"
-        android:layout_alignParentRight="true"
-        android:padding="16dp"/>
+
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:padding="1dp"
+                tools:src="@drawable/number_one" />
+
+            <RelativeLayout
+                android:id="@+id/list_1"
+                android:layout_width="match_parent"
+
+                android:layout_height="80dp"
+                android:layout_toRightOf="@id/img1"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/Bangla_text_view"
+                    android:layout_width="214dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="23dp"
+                    tools:text="Aak" />
+
+                <TextView
+                    android:id="@+id/default_text_view"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Bangla_text_view"
+                    android:textColor="#FFFFFF"
+                    android:textSize="19dp"
+                    tools:text="One" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/ic_play_arrow_green"
+            app:elevation="8dp"
+            app:fabSize="normal"
+            app:backgroundTint="#fff"
+            app:pressedTranslationZ="15dp" />
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:src="@drawable/play_arrow"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:padding="16dp"/>-->
 
 
+    </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>
